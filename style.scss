@@ -1,0 +1,243 @@
+$flag: 0;
+
+.brdr1 {
+    @if($flag==1) {
+        border: 1px solid black;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-style: preserve-3d;
+
+    >.watch {
+        width: 500px;
+        height: 500px;
+        @extend .brdr1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        transform-style: inherit;
+
+
+        >.watch-band {
+            position: absolute;
+            width: 220px;
+            height: 480px;
+            background-color: #121534;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+
+            >.watch-strap-right {
+                width: 10px;
+                height: 100%;
+                background-color: #EDEDEF;
+                border-top-left-radius: 05px;
+                border-bottom-left-radius: 05px;
+            }
+
+            >.watch-strap-left {
+                width: 10px;
+                height: 100%;
+                background-color: #EDEDEF;
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
+        }
+
+        >.watch-face {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background-color: #ECECEF;
+            border-radius: 50%;
+
+            >.watch-center {
+                width: 380px;
+                height: 380px;
+                border-radius: 50%;
+                background-image: radial-gradient(#fff, #eeeeef);
+                ;
+                position: absolute;
+                left: 2.5%;
+                top: 2.5%;
+
+                >.watch-points {
+                    position: relative;
+
+                    &::after {
+                        content: '';
+                        display: block;
+                        border: 2px solid #dededf;
+                        border-radius: 50%;
+                        width: 350px;
+                        height: 350px;
+                        position: absolute;
+                        left: 15px;
+                        top: 13px;
+                    }
+
+                    >span {
+                        display: block;
+                        background-image: linear-gradient(to bottom, #c6c6cb, #e0e0e1);
+                        ;
+                        width: 2px;
+                        height: 12px;
+                        position: absolute;
+
+                        &:nth-of-type(1) {
+                            transform: translate(190px, 0);
+                        }
+
+                        &:nth-of-type(2) {
+                            transform: rotate(30deg) translate(260px, -118px);
+                        }
+
+                        &:nth-of-type(3) {
+                            transform: rotate(60deg) translate(260px, -256px);
+                        }
+
+                        &:nth-of-type(4) {
+                            transform: rotate(90deg) translate(190px, -373px);
+                        }
+
+                        &:nth-of-type(5) {
+                            transform: rotate(120deg) translate(57px, -440px);
+                        }
+
+                        &:nth-of-type(6) {
+                            transform: rotate(150deg) translate(-74px, -438px);
+                        }
+
+                        &:nth-of-type(7) {
+                            transform: rotate(180deg) translate(-190px, -368px);
+                        }
+
+                        &:nth-of-type(8) {
+                            transform: rotate(210deg) translate(-255px, -250px);
+                        }
+
+                        &:nth-of-type(9) {
+                            transform: rotate(240deg)translate(-247px, -112px);
+                        }
+
+                        &:nth-of-type(10) {
+                            transform: rotate(270deg)translate(-190px, 5px);
+                        }
+
+                        &:nth-of-type(11) {
+                            transform: rotate(300deg) translate(-70px, 72px);
+                        }
+
+                        &:nth-of-type(12) {
+                            transform: rotate(330deg)translate(66px, 70px);
+                        }
+                    }
+                }
+
+                >.watch-tips {
+                    >span {
+                        display: block;
+                    }
+
+                    >.hours {
+                        height: 6px;
+                        width: 150px;
+                        background-color: rgb(172, 170, 170);
+                        position: absolute;
+                        top: 50%;
+                        left: calc(50% - 20px);
+                        transform-origin: 20px center;
+                        animation: hours 216000s linear infinite;
+                    }
+
+                    >.minutes {
+                        height: 5px;
+                        width: 170px;
+                        background-color: black;
+                        position: absolute;
+                        top: 50%;
+                        transform-origin: 25px center;
+                        left: calc(50% - 25px);
+                        animation: minutes 3600s linear infinite;
+                    }
+
+                    >.seconds {
+                        transform: rotate(-90deg);
+                        height: 3px;
+                        width: 190px;
+                        background-color: red;
+                        transform-origin: 30px center;
+                        position: absolute;
+                        top: 50%;
+                        left: calc(50% - 30px);
+                        animation: seconds 60s linear infinite;
+                    }
+
+                    >.watch-date {
+                        position: absolute;
+                        color: black;
+                        left: calc(50% - 20px);
+                        top: 25%;
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+        >figure{
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 88.7%;
+            z-index: 999;
+            >img{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+    }
+}
+
+@keyframes seconds {
+    0% {
+        transform: rotate(-90deg);
+    }
+
+    100% {
+        transform: rotate(450deg);
+    }
+}
+
+@keyframes minutes {
+    0% {
+        transform: rotate(-120deg);
+    }
+
+    100% {
+        transform: rotate(270deg);
+    }
+}
+
+@keyframes hours {
+    0% {
+        transform: rotate(-60deg);
+    }
+
+    100% {
+        transform: rotate(270deg);
+    }
+}
